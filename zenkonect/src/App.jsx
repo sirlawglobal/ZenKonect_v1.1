@@ -1,17 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Header from './components/Helper/Header';
+import LoginForm from './components/Views/LoginForm';
+import Footer from './components/Helper/Footer';
+import lucide from 'lucide-react';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-     
-     <p className='bg-red-900'>hello</p>
-    </>
-  )
-}
+    <div className="min-h-screen flex flex-col bg-gray-100">
+      <Header />
+      <main className="flex-grow flex items-center justify-center p-4">
+        <LoginForm />
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
-export default App
+export default App;
