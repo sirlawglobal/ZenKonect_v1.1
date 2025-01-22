@@ -1,4 +1,6 @@
-import React from 'react';
+import logo from "../../components/assets/logo.png";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Twitter, Instagram, Facebook, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -6,16 +8,57 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Social */}
-          <div className="space-y-6">
-            <img src="../../assets/logo-zk.png" alt="Zenkonect" className="h-10" />
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-green-500"><img src="/twitter.svg" alt="Twitter" className="h-6 w-6" /></a>
-              <a href="#" className="hover:text-green-500"><img src="/instagram.svg" alt="Instagram" className="h-6 w-6" /></a>
-              <a href="#" className="hover:text-green-500"><img src="/tiktok.svg" alt="TikTok" className="h-6 w-6" /></a>
-              <a href="#" className="hover:text-green-500"><img src="/facebook.svg" alt="Facebook" className="h-6 w-6" /></a>
-              <a href="#" className="hover:text-green-500"><img src="/youtube.svg" alt="YouTube" className="h-6 w-6" /></a>
-              <a href="#" className="hover:text-green-500"><img src="/snapchat.svg" alt="Snapchat" className="h-6 w-6" /></a>
-            </div>
+          <div className="space-y-6 flex flex-col items-center">
+             <div className="flex items-center">
+             <img
+                      src={logo}
+                      alt="Zenkonect"
+                      className="h-8"
+                    />
+                    <span className="ml-2">Zenkonect</span>
+             </div>
+            <Router>
+              <div className="flex space-x-4 p-2">
+                {/* Twitter Link */}
+                <Link to="/twitter" className="hover:text-green-500">
+                  <Twitter className="h-6 w-6" />
+                </Link>
+
+                {/* Instagram Link */}
+                <Link to="/instagram" className="hover:text-green-500">
+                  <Instagram className="h-6 w-6" />
+                </Link>
+
+                {/* Facebook Link */}
+                <Link to="/facebook" className="hover:text-green-500">
+                  <Facebook className="h-6 w-6" />
+                </Link>
+
+                {/* YouTube Link */}
+                <Link to="/youtube" className="hover:text-green-500">
+                  <Youtube className="h-6 w-6" />
+                </Link>
+
+                {/* Linkedin Link */}
+                {/* <Link to="/youtube" className="hover:text-green-500">
+                  <Linkedin className="h-6 w-6" />
+                </Link> */}
+
+                {/* Linkedin Link */}
+                {/* <Link to="/youtube" className="hover:text-green-500">
+                  <MessageCircle className="h-6 w-6" />
+                </Link> */}
+
+                
+              </div>
+
+              <Routes>
+                <Route path="/twitter" element={<h1>Twitter Page</h1>} />
+                <Route path="/instagram" element={<h1>Instagram Page</h1>} />
+                <Route path="/facebook" element={<h1>Facebook Page</h1>} />
+                <Route path="/youtube" element={<h1>YouTube Page</h1>} />
+              </Routes>
+            </Router>
             <p className="text-sm">© 2024 Zenkonect. All rights reserved.</p>
           </div>
 
@@ -23,9 +66,21 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="hover:text-green-500">Home</a></li>
-              <li><a href="#" className="hover:text-green-500">Community</a></li>
-              <li><a href="#" className="hover:text-green-500">Contact Us</a></li>
+              <li>
+                <a href="#" className="hover:text-green-500">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-green-500">
+                  Community
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-green-500">
+                  Contact Us
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -33,9 +88,21 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Support</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="hover:text-green-500">Help Center</a></li>
-              <li><a href="#" className="hover:text-green-500">Help FAQs</a></li>
-              <li><a href="#" className="hover:text-green-500">Feedback</a></li>
+              <li>
+                <a href="#" className="hover:text-green-500">
+                  Help Center
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-green-500">
+                  Help FAQs
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-green-500">
+                  Feedback
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -43,9 +110,21 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Legal</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="hover:text-green-500">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-green-500">Terms and Conditions</a></li>
-              <li><a href="#" className="hover:text-green-500">Subscription</a></li>
+              <li>
+                <a href="#" className="hover:text-green-500">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-green-500">
+                  Terms and Conditions
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-green-500">
+                  Subscription
+                </a>
+              </li>
             </ul>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import logo from "../../components/assets/logo.png";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from "../../components/assets/logo.png";
 
 const Home = () => <div></div>;
 const Community = () => <div>Community Page</div>;
@@ -18,11 +18,12 @@ const Header = () => {
       <nav className="max-w-7xl mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <img
-              src="../../assets/logo-zk.png"
-              alt="Zenkonect"
-              className="h-8"
-            />
+          <img
+          src={logo}
+          alt="Zenkonect"
+          className="h-8"
+        />
+        <span className="ml-2">Zenkonect</span>
           </div>
 
           {/* Desktop Navigation */}
