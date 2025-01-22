@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
 
 const LoginForm = () => {
@@ -76,7 +77,7 @@ const LoginForm = () => {
 
         <div className="text-center mt-6">
           <p className="text-gray-600 text-sm">
-            Don't have an account?{' '}
+            Do not have an account?{' '}
             <a href="#" className="text-green-500 hover:text-green-600 font-medium">
               Sign Up
             </a>

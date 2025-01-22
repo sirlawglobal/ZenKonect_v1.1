@@ -1,7 +1,6 @@
 import Header from './components/Helper/Header';
 import LoginForm from './components/Views/LoginForm';
 import Footer from './components/Helper/Footer';
-import lucide from 'lucide-react';
 
 const App = () => {
   return (
