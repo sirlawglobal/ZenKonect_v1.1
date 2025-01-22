@@ -4,6 +4,9 @@ import signUpBtn from './assets/signUpBtn.png';
 import appStoreBtn from './assets/appStore.png'; 
 import googlePlayBtn from './assets/googlePlay.png'; 
 import './App.css'
+import Header from './components/Helper/Header';
+import LoginForm from './components/Views/LoginForm';
+import Footer from './components/Helper/Footer';
 
 const App = () => {
   return (
