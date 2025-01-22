@@ -1,18 +1,21 @@
 import React from 'react';
-import videoBg from './assets/love bird video ad2.mp4'; 
-import signUpBtn from './assets/signUpBtn.png'; 
-import appStoreBtn from './assets/appStore.png'; 
-import googlePlayBtn from './assets/googlePlay.png'; 
-import './App.css'
-import Header from './components/Helper/Header';
-import LoginForm from './components/Views/LoginForm';
-import Footer from './components/Helper/Footer';
+import videoBg from '../assets/love bird video ad2.mp4'; 
+import signUpBtn from '../assets/signUpBtn.png'; 
+import appStoreBtn from '../assets/appStore.png'; 
+import googlePlayBtn from '../assets/googlePlay.png'; 
+import adsHeader from '../assets/adsHeader.png'; 
+import ads from '../assets/ads.png';  
+import '../../App.css';
+import Header from '../Helper/Header';
+// import LoginForm from './LoginForm';
+import Footer from '../../components/Helper/Footer';
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App" >
       {/* Hero Section with Video Background */}
-      <section className="hero relative h-screen flex flex-col justify-center items-center text-center text-white">
+      <Header   id="header"/>
+      <section className="hero relative h-screen flex flex-col justify-center items-center text-center text-white" id='main-body'>
         
         {/* Video Background */}
         <video 
@@ -47,9 +50,15 @@ const App = () => {
               <img src={appStoreBtn} alt="icon"   id='appStoreBtn'/>
            </div>
 
+
+           <div className="text-right" id='ads_ctn'>
+              <img src={adsHeader} alt="icon"   id='adsHeader'/>
+              <img src={ads} alt="icon"   id='adsBody'/>
+           </div>
+
         </div>
 
-    
+       
 
       </section>
     </div>
