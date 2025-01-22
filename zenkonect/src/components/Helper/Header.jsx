@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../../components/assets/logo.png";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import App from "../Views/App"
 
 const Home = () => <div></div>;
 const Community = () => <div>Community Page</div>;
@@ -68,7 +69,7 @@ const Header = () => {
                   Language
                 </Link>
                 <Link
-                  to="/login"
+                  to="../Views/loginApp"
                   className="text-green-500 font-medium hover:text-green-600"
                 >
                   Login

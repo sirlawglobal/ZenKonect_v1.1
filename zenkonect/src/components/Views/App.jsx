@@ -7,7 +7,7 @@ import adsHeader from '../assets/adsHeader.png';
 import ads from '../assets/ads.png';  
 import '../../App.css';
 import Header from '../Helper/Header';
-// import LoginForm from './LoginForm';
+import LoginApp from '../Views/LoginApp';
 import Footer from '../../components/Helper/Footer';
 
 const App = () => {
