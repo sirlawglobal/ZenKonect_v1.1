@@ -1,9 +1,11 @@
-import Sidebar from "../../Helper/Sidebar"
+import Content from "./Content"
+import Sidebar from "./Sidebar"
 
 const Dashboard = () => {
   return (
-    <div>
-      <Sidebar/>
+    <div className="flex">
+      <Sidebar />
+      <Content />
     </div>
   )
 }
