@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
+import React, { useState } from "react";
+import { Eye, EyeOff, Mail, Lock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,12 +10,18 @@ const LoginForm = () => {
     <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md w-full max-w-md mx-4">
       <h1 className="text-2xl font-bold text-center mb-4">Login</h1>
       <p className="text-center text-gray-600 text-sm sm:text-base mb-8">
-        Login your <span className="text-green-500">Zenkonect</span> account and start connecting today!
+        Login your <span className="text-green-500">Zenkonect</span> account and
+        start connecting today!
       </p>
 
       <form className="space-y-6">
         <div>
-          <label htmlFor="email" className="block text-gray-700 mb-2 text-sm font-medium">Email</label>
+          <label
+            htmlFor="email"
+            className="block text-gray-700 mb-2 text-sm font-medium"
+          >
+            Email
+          </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Mail className="h-5 w-5 text-gray-400" />
@@ -29,7 +36,12 @@ const LoginForm = () => {
         </div>
 
         <div>
-          <label htmlFor="password" className="block text-gray-700 mb-2 text-sm font-medium">Password</label>
+          <label
+            htmlFor="password"
+            className="block text-gray-700 mb-2 text-sm font-medium"
+          >
+            Password
+          </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Lock className="h-5 w-5 text-gray-400" />
@@ -45,7 +57,11 @@ const LoginForm = () => {
               className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+              {showPassword ? (
+                <EyeOff className="h-5 w-5" />
+              ) : (
+                <Eye className="h-5 w-5" />
+              )}
             </button>
           </div>
         </div>
@@ -77,10 +93,13 @@ const LoginForm = () => {
 
         <div className="text-center mt-6">
           <p className="text-gray-600 text-sm">
-            Do not have an account?{' '}
-            <a href="#" className="text-green-500 hover:text-green-600 font-medium">
+            Do not have an account?{" "}
+            <Link
+              to="/CreateAccount"
+              className="text-green-500 hover:text-green-600 font-medium"
+            >
               Sign Up
-            </a>
+            </Link>
           </p>
         </div>
       </form>
