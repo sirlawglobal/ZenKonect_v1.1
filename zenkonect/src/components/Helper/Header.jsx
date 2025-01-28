@@ -12,7 +12,7 @@ const Header = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <img src={logo} alt="Zenkonect" className="h-8" />
-            <span className="ml-2">Zenkonect</span>
+            <span className="ml-2 text-pink-500 font-bold">Zenkonect</span>
           </div>
 
           {/* Desktop Navigation */}

@@ -1,10 +1,5 @@
 import React from 'react';
 import { Home, Heart, Users, MessageSquare, Settings, HelpCircle, LogOut } from 'lucide-react';
-import dashImg from "../assets/dashImg.png";
-import slideImg from "../assets/slideImg.png";
-import likeImg from "../assets/likeImg.png";
-import chatReq from "../assets/chatReq.png";
-import advertImg from "../assets/advertImg.png";
 
 export default function DatingApp() {
   return (
@@ -14,7 +9,7 @@ export default function DatingApp() {
         <div className="p-4 border-b border-gray-200">
           <div className="flex items-center space-x-3">
             <img 
-              src={dashImg}
+              src="/api/placeholder/40/40" 
               alt="Profile" 
               className="w-10 h-10 rounded-full"
             />
@@ -65,9 +60,9 @@ export default function DatingApp() {
             {[1, 2, 3, 4, 5].map((i) => (
               <div key={i} className="flex-shrink-0">
                 <img
-                  src={`slideImg ${i}`}
+                  src={`/api/placeholder/120/160`}
                   alt={`Person ${i}`}
-                  className="w-56 h-60 object-cover rounded-lg shadow-md"
+                  className="w-32 h-40 object-cover rounded-lg shadow-md"
                 />
               </div>
             ))}
@@ -82,7 +77,7 @@ export default function DatingApp() {
               {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
                 <div key={i} className="flex items-center space-x-3 p-4 hover:bg-gray-50 border-b">
                   <img
-                    src={slideImg}
+                    src="/api/placeholder/40/40"
                     alt={`Activity ${i}`}
                     className="w-10 h-10 rounded-full"
                   />
@@ -116,7 +111,7 @@ export default function DatingApp() {
               <h3 className="text-lg font-semibold mb-2">ADVERTISE WITH US!</h3>
               <div className="bg-gray-100 p-4 rounded">
                 <img
-                  src={advertImg}
+                  src="/api/placeholder/800/200"
                   alt="Advertisement"
                   className="w-full h-32 object-cover rounded"
                 />
@@ -133,7 +128,7 @@ export default function DatingApp() {
                   <div key={i} className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
                     <div className="flex items-center space-x-3">
                       <img
-                        src={likeImg}
+                        src="/api/placeholder/40/40"
                         alt={`Suggestion ${i}`}
                         className="w-10 h-10 rounded-full"
                       />
@@ -155,7 +150,7 @@ export default function DatingApp() {
                   <div key={i} className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
                     <div className="flex items-center space-x-3">
                       <img
-                        src={chatReq}
+                        src="/api/placeholder/40/40"
                         alt={`Request ${i}`}
                         className="w-10 h-10 rounded-full"
                       />
