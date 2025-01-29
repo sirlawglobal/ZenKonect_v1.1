@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from 'axios';
 import { EyeIcon, EyeOffIcon, MailIcon, LockIcon, CheckCircle2Icon, AlertTriangleIcon } from "lucide-react";
 import imgLog from "../assets/imgLog.png";
@@ -144,7 +144,7 @@ const LoginForm = () => {
               <div className="text-center">
                 <p className="text-gray-600 text-sm">
                   Do not have an account?{" "}
-                  <a href="#" className="text-pink-500 font-medium hover:text-pink-600">
+                  <a href="/CreateAccount" className="text-pink-500 font-medium hover:text-pink-600">
                     Sign Up
                   </a>
                 </p>

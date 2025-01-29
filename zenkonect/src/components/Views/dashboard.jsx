@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Home, Heart, Users, MessageSquare, Settings, HelpCircle, LogOut } from 'lucide-react';
 import dashImg from "../assets/dashImg.png";
 import slideImg from "../assets/slideImg.png";
