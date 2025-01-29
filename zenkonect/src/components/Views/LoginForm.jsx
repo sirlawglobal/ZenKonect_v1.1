@@ -1,179 +1,199 @@
-import React from 'react';
-import { Home, Heart, Users, MessageSquare, Settings, HelpCircle, LogOut } from 'lucide-react';
-import dashImg from "../assets/dashImg.png";
-import slideImg from "../assets/slideImg.png";
-import likeImg from "../assets/likeImg.png";
-import chatReq from "../assets/chatReq.png";
-import advertImg from "../assets/advertImg.png";
+import React, { useState } from "react";
+import axios from 'axios';
+import { EyeIcon, EyeOffIcon, MailIcon, LockIcon, CheckCircle2Icon, AlertTriangleIcon } from "lucide-react";
+import imgLog from "../assets/imgLog.png";
+import leadImg from "../assets/leadImg.png";
 
-export default function DatingApp() {
+const LoginForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [message, setMessage] = useState({ type: null, text: "" });
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setMessage({ type: null, text: "" });
+
+    try {
+      const response = await axios.post('https://zenkonnect.tranquility.org.ng/api/User/Login', {
+        email,
+        password
+      });
+
+      setMessage({ 
+        type: 'success', 
+        text: 'Login successful! Redirecting...' 
+      });
+
+      localStorage.setItem('token', response.data.token);
+
+    } catch (error) {
+      setMessage({ 
+        type: 'error', 
+        text: error.response?.data?.message || 'Login failed. Please try again.' 
+      });
+    }
+  };
+
   return (
-    <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
-      <div className="w-64 bg-white border-r border-gray-200">
-        <div className="p-4 border-b border-gray-200">
-          <div className="flex items-center space-x-3">
-            <img 
-              src={dashImg}
-              alt="Profile" 
-              className="w-10 h-10 rounded-full"
-            />
-            <div>
-              <p className="font-semibold">Haley, 25</p>
-            </div>
-          </div>
+    <div className="flex items-center w-full justify-center min-h-screen bg-white relative">
+      {/* Toast/Popup Message */}
+      {message.type && (
+        <div 
+          className={`
+            fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 rounded-lg flex items-center 
+            ${message.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}
+          `}
+        >
+          {message.type === 'success' ? (
+            <CheckCircle2Icon className="mr-2 w-5 h-5" />
+          ) : (
+            <AlertTriangleIcon className="mr-2 w-5 h-5" />
+          )}
+          {message.text}
         </div>
+      )}
 
-        {/* Navigation */}
-        <nav className="mt-4">
-          <a href="#" className="flex items-center px-4 py-3 text-pink-500 bg-pink-50">
-            <Home className="mr-3" size={24} />
-            <span>Home</span>
-          </a>
-          <a href="#" className="flex items-center px-4 py-3 text-gray-700 hover:bg-pink-50 hover:text-pink-500">
-            <Heart className="mr-3" size={24} />
-            <span>Matches</span>
-          </a>
-          <a href="#" className="flex items-center px-4 py-3 text-gray-700 hover:bg-pink-50 hover:text-pink-500">
-            <Users className="mr-3" size={24} />
-            <span>People Nearby</span>
-          </a>
-          <a href="#" className="flex items-center px-4 py-3 text-gray-700 hover:bg-pink-50 hover:text-pink-500">
-            <MessageSquare className="mr-3" size={24} />
-            <span>Chats</span>
-          </a>
-          <a href="#" className="flex items-center px-4 py-3 text-gray-700 hover:bg-pink-50 hover:text-pink-500">
-            <Settings className="mr-3" size={24} />
-            <span>Settings</span>
-          </a>
-          <a href="#" className="flex items-center px-4 py-3 text-gray-700 hover:bg-pink-50 hover:text-pink-500">
-            <HelpCircle className="mr-3" size={24} />
-            <span>Help Center</span>
-          </a>
-          <a href="#" className="flex items-center px-4 py-3 text-gray-700 hover:bg-pink-50 hover:text-pink-500">
-            <LogOut className="mr-3" size={24} />
-            <span>Log Out</span>
-          </a>
-        </nav>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 p-6">
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">People Nearby</h2>
-          <div className="flex space-x-4 overflow-x-auto pb-4">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="flex-shrink-0">
-                <img
-                  src={`slideImg ${i}`}
-                  alt={`Person ${i}`}
-                  className="w-56 h-60 object-cover rounded-lg shadow-md"
-                />
+      <div className="flex w-full max-w-4xl bg-gray-100 rounded-lg shadow-lg overflow-hidden h-full">
+        <div className="w-1/2 flex items-center justify-center h-full">
+          <div className="p-3 rounded-lg w-full max-w-md">
+            <div className="flex flex-col justify-center mb-6">
+              <div className="flex items-center justify-left">
+                <img src={leadImg} alt="Zenkonect" className="w-10 h-10 mr-2" />
+                <span className="text-2xl font-bold text-pink-500">Zenkonect</span>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Three Column Layout */}
-        <div className="grid grid-cols-3 gap-6">
-          <div className="bg-white rounded-lg shadow h-full">
-            <h2 className="text-xl font-semibold p-4 border-b">Recent Activities</h2>
-            <div className="overflow-y-auto" style={{ height: "calc(100vh - 300px)" }}>
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                <div key={i} className="flex items-center space-x-3 p-4 hover:bg-gray-50 border-b">
-                  <img
-                    src={slideImg}
-                    alt={`Activity ${i}`}
-                    className="w-10 h-10 rounded-full"
+            </div>
+            <p className="text-gray-600 text-left mb-6">
+              Login to your <span className="text-pink-500">Zenkonect</span> account and start connecting today!
+            </p>
+    
+            <form onSubmit={handleLogin} className="space-y-6">
+              <div>
+                <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+                  Email
+                </label>
+                <div className="relative">
+                  <MailIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="pl-10 pr-4 py-2.5 w-full border rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                    placeholder="Enter Email"
+                    required
                   />
-                  <div>
-                    <p className="text-sm">
-                      <span className="font-semibold">Jessica</span> liked your photo
-                    </p>
-                    <p className="text-xs text-gray-500">20m ago</p>
-                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Column 2 - Swipe Match and Advertisement */}
-          <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow p-6 text-center">
-              <div className="mx-auto">
-                <h3 className="text-xl font-semibold mb-2">Swipe To Match With People</h3>
-                <p className="text-gray-600 mb-4">
-                  Swipe to match with like-minded people and discover new connections!
+              </div>
+    
+              <div>
+                <label htmlFor="password" className="block text-gray-700 font-medium mb-2">
+                  Password
+                </label>
+                <div className="relative">
+                  <LockIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="pl-10 pr-12 py-2.5 w-full border rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                    placeholder="Enter Password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? (
+                      <EyeOffIcon className="w-5 h-5" />
+                    ) : (
+                      <EyeIcon className="w-5 h-5" />
+                    )}
+                  </button>
+                </div>
+              </div>
+    
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="remember"
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    className="h-4 w-4 text-pink-500 focus:ring-pink-500 border-gray-300 rounded"
+                  />
+                  <label htmlFor="remember" className="ml-2 text-gray-600 text-sm">
+                    Remember me
+                  </label>
+                </div>
+                <a href="#" className="text-pink-500 text-sm hover:text-pink-600">
+                  Forgot Password?
+                </a>
+              </div>
+    
+              <button
+                type="submit"
+                className="w-full bg-pink-500 text-white py-2.5 px-4 rounded-lg hover:bg-pink-600 transition duration-200 font-medium"
+              >
+                Login
+              </button>
+    
+              <div className="text-center">
+                <p className="text-gray-600 text-sm">
+                  Do not have an account?{" "}
+                  <a href="#" className="text-pink-500 font-medium hover:text-pink-600">
+                    Sign Up
+                  </a>
                 </p>
-                <button className="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600">
-                  Start Swiping
-                </button>
               </div>
-            </div>
-
-            {/* Advertisement */}
-            <div className="bg-white rounded-lg p-4 text-center">
-              <h3 className="text-lg font-semibold mb-2">ADVERTISE WITH US!</h3>
-              <div className="bg-gray-100 p-4 rounded">
-                <img
-                  src={advertImg}
-                  alt="Advertisement"
-                  className="w-full h-32 object-cover rounded"
-                />
-              </div>
-            </div>
+            </form>
           </div>
-
-          {/* Column 3 - You May Like and Chat Requests */}
-          <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow p-4">
-              <h2 className="text-xl font-semibold mb-4">You May Like</h2>
-              <div className="space-y-4">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
-                    <div className="flex items-center space-x-3">
-                      <img
-                        src={likeImg}
-                        alt={`Suggestion ${i}`}
-                        className="w-10 h-10 rounded-full"
-                      />
-                      <span className="font-medium">Samuel Rodriguez</span>
-                    </div>
-                    <button className="text-pink-500 hover:text-pink-600">
-                      <Heart size={20} />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Chat Requests */}
-            <div className="bg-white rounded-lg shadow p-4">
-              <h2 className="text-xl font-semibold mb-4">Chat Requests</h2>
-              <div className="space-y-4">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
-                    <div className="flex items-center space-x-3">
-                      <img
-                        src={chatReq}
-                        alt={`Request ${i}`}
-                        className="w-10 h-10 rounded-full"
-                      />
-                      <div>
-                        <p className="font-medium">Samuel Rodriguez</p>
-                        <p className="text-xs text-gray-500">2 min ago</p>
-                      </div>
-                    </div>
-                    <button className="bg-green-500 text-white px-3 py-1 rounded-full text-sm">
-                      Accept
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+        </div>
+    
+        <div className="w-1/2 flex items-center rounded-lg justify-center h-full">
+          <img 
+            src={imgLog} 
+            alt="Login Illustration" 
+            className="object-contain w-full max-w-md p-3 h-full" 
+          />
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default LoginForm;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
