@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import LoginApp from "../Views/LoginApp";
+import Dashboard from "../Views/Dashboard";
 import Home from "../Helper/Home";
 import Header from "../Helper/Header";
 import Dashboard from "./Dashboard/Index";
