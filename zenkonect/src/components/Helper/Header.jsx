@@ -12,7 +12,7 @@ const Header = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <img src={logo} alt="Zenkonect" className="h-8" />
-            <span className="ml-2">Zenkonect</span>
+            <span className="ml-2 text-pink-500 font-bold">Zenkonect</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -32,7 +32,7 @@ const Header = () => {
             <Link to="/language" className="text-gray-700 hover:text-gray-900">
               Language
             </Link>
-            <Link to="/login" className="text-green-500 font-medium hover:text-green-600">
+            <Link to="/login" className="text-pink-500 font-medium hover:text-green-600">
               Login
             </Link>
           </div>
