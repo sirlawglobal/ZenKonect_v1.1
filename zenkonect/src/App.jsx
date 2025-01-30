@@ -1,17 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import LoginApp from "./components/Views/LoginApp";
+import Home from "./components/Helper/Home";
+import Header from "./components/Helper/Header";
+import CreateAccount from "./components/Views/CreateAccount";
+import Dashboard from "./components/Views/dashboard";
+import AddPicture from "./AddPicture";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-     
-     <p className='bg-red-900'>hello</p>
-    </>
-  )
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginApp />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/CreateAccount" element={<CreateAccount />} />
+        <Route path="/Addpicture" element={<AddPicture />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
